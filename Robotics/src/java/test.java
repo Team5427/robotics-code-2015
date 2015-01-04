@@ -7,7 +7,7 @@ public class test {
 		System.out.println("i believe i can push!");
 		System.out.println("no par le francias");		//IWANNAPUSH
 		//and here
-		System.out.println("#WHAP GOD!!!");
+		System.out.println("#WHAP GOD!!!");//said Andrew
 		System.out.println("I will speak in french !!!");
 
 	}
