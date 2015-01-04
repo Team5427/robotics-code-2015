@@ -10,6 +10,7 @@ public class test {
 		System.out.println("#WHAP GOD!!!");//said Andrew
 		System.out.println("I will speak in french !!!");
 		//CHANGED FIRST
+		//LOL
 
 	}
 }
