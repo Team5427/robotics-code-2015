@@ -9,6 +9,7 @@ public class test {
 		//and here
 		System.out.println("#WHAP GOD!!!");//said Andrew
 		System.out.println("I will speak in french !!!");
+		//CHANGED FIRST
 
 	}
 }
