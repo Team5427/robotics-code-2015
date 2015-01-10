@@ -2,9 +2,14 @@
 package org.usfirst.frc.team5427.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team5427.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5427.robot.subsystems.ExampleSubsystem;
 
@@ -21,15 +26,22 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
-
+    RobotDrive myRobot;
+    Joystick stick;
+    SpeedController motor = new Talon(1);	//TODO may need to change based on what brand of motor controller we are using in the robot
+    					
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
 		oi = new OI();
+		myRobot = new RobotDrive(0,1);
+		stick = new Joystick(1);
+		
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+//        autonomousCommand = new ExampleCommand();
     }
 	
 	public void disabledPeriodic() {
@@ -54,6 +66,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
     }
 
     /**
@@ -69,6 +82,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        motor.set(stick.getY()); 			//TODO see if this method actually works, and if the safety feature of the motor will cause it to explode(shut itself off)
     }
     
     /**
