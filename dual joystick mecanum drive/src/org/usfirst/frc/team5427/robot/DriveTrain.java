@@ -2,6 +2,8 @@ package org.usfirst.frc.team5427.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 
 
@@ -9,6 +11,8 @@ public class DriveTrain
 {
 	SpeedController fl,fr,rl,rr;
 	Joystick j;
+	
+	Button toggle = new JoystickButton(j,2);
 	
 	public DriveTrain(SpeedController fl, SpeedController fr, SpeedController rl, SpeedController rr, Joystick j){
 		this.fl = fl;
@@ -27,6 +31,7 @@ public class DriveTrain
 		while(true){
 			try
 			{
+				toggle.
 				/* Code for a basic tank drive
 				double y = j.getY();
 				double z = j.getZ();
@@ -54,10 +59,26 @@ public class DriveTrain
 				fr.set(right);
 				rr.set(right);
 				*/
+
 				
 				double x = j.getX();
-				if(x !=0)
-					continue;
+//					if(x !=0)
+//						continue;
+				if(x >0){
+					fl.set(x);
+					rl.set(-x);
+					fr.set(x);
+					rr.set(-x);
+				}
+				
+				else if(x<0){	
+					fl.set(x);
+					rl.set(-x);
+					fr.set(x);
+					rr.set(-x);
+			}
+				
+				}
 				
 				Thread.sleep(5);
 			} catch (InterruptedException e)
