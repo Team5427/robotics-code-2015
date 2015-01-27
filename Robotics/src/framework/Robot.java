@@ -1,6 +1,8 @@
 package framework;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -46,4 +48,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Teleop.periodic();
     }
+    
+    SpeedController s = new Talon(0);
+    
+    
 }
