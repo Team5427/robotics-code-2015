@@ -5,18 +5,30 @@ import edu.wpi.first.wpilibj.Talon;
 public class SteelTalon extends Talon{
 	
 	boolean reverse;
-	public SteelTalon(int channel, boolean r) {
+	double forwardOffset,backwardsOffset;
+	public SteelTalon(int channel, boolean r, double forwardOffset, double backwardsOffset){
 		super(channel);
+		this.forwardOffset = forwardOffset;
+		this.backwardsOffset = backwardsOffset;
 		// TODO Auto-generated constructor stub
 		reverse = r;
 	}
 	
 	@Override
     public void set(double speed) {
-		if(reverse)
+		if(speed>.02)
+			speed += forwardOffset;
+		else if (speed<-.02)
+			speed -= backwardsOffset;
+
+		if(speed > 1) speed = 1;
+		if(speed < -1) speed = -1;
+		if(reverse){
 		super.set(-1*speed);
-		else
+		}
+		else{
 		super.set(speed);
+		}
         Feed();
     }
 
