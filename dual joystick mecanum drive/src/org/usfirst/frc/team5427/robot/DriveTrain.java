@@ -1,10 +1,11 @@
 package org.usfirst.frc.team5427.robot;
 
+import org.usfirst.frc.team5427.robot.commands.Drive;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 
 
 public class DriveTrain
@@ -12,7 +13,7 @@ public class DriveTrain
 	SpeedController fl,fr,rl,rr;
 	Joystick j;
 	
-	Button toggle = new JoystickButton(j,2);
+	Button toggle = new JoystickButton(j, 2);
 	
 	public DriveTrain(SpeedController fl, SpeedController fr, SpeedController rl, SpeedController rr, Joystick j){
 		this.fl = fl;
@@ -20,18 +21,25 @@ public class DriveTrain
 		this.rl = rl;
 		this.rr = rr;
 		this.j = j;
-		/*
+//		Drive d = new Drive();
+		while(true){
+		if(j.getRawButton(2) == true){
+		fr.set(1);
+		}
+		}
+			/*
         for(int i = 0; i<50; i++){
         	rl.set(.5);
         	rr.set(-.5);
         	fr.set(-.5);
         	fl.set(.5);
         }
-		*/
+		
 		while(true){
 			try
 			{
-				toggle.
+		//		toggle.whileHeld(d);
+			//toggle.whenReleased();
 				/* Code for a basic tank drive
 				double y = j.getY();
 				double z = j.getZ();
@@ -58,9 +66,8 @@ public class DriveTrain
 				rl.set(left);
 				fr.set(right);
 				rr.set(right);
-				*/
-
 				
+			
 				double x = j.getX();
 //					if(x !=0)
 //						continue;
@@ -76,8 +83,7 @@ public class DriveTrain
 					rl.set(-x);
 					fr.set(x);
 					rr.set(-x);
-			}
-				
+			}			
 				
 				
 				Thread.sleep(5);
@@ -86,8 +92,9 @@ public class DriveTrain
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			*/
 		}
 
 	}
 
-}
+

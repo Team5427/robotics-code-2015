@@ -25,11 +25,11 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
 //	Joystick jRight = new Joystick(0);
-	Joystick j = new Joystick(0);
-	SpeedController frontLeft = new Talon(0);
-	SpeedController frontRight = new Talon(1);
-	SpeedController rearLeft = new Talon(2);
-	SpeedController rearRight = new Talon(3);
+	public static final Joystick j = new Joystick(0);
+	public static final SpeedController frontLeft = new Talon(0);
+	public static final SpeedController frontRight = new Talon(1);
+	public static final SpeedController rearLeft = new Talon(2);
+	public static final SpeedController rearRight = new Talon(3);
 	
 	DriveTrain d;
 	
