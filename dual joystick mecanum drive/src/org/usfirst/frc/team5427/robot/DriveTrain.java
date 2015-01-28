@@ -1,6 +1,5 @@
 package org.usfirst.frc.team5427.robot;
 
-import org.usfirst.frc.team5427.robot.commands.Drive;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -28,15 +27,15 @@ public class DriveTrain
 //			if(x !=0)
 //				continue;
 		if(x >0){
-			fl.set(-x);
-			rl.set(x);
+			fl.set(x);
+			rl.set(-x);
 			fr.set(x);
 			rr.set(-x);
 		}
 		
 		else if(x<0){	
-			fl.set(-x);
-			rl.set(x);
+			fl.set(x);
+			rl.set(-x);
 			fr.set(x);
 			rr.set(-x);
 	}	
@@ -63,8 +62,8 @@ public class DriveTrain
 			right = y;
 		}
 
-		fl.set(-left);
-		rl.set(-left);
+		fl.set(left);
+		rl.set(left);
 		fr.set(right);
 		rr.set(right);
 		
