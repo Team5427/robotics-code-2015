@@ -28,19 +28,20 @@ public class DriveTrain
 //			if(x !=0)
 //				continue;
 		if(x >0){
-			fl.set(x);
-			rl.set(-x);
+			fl.set(-x);
+			rl.set(x);
 			fr.set(x);
 			rr.set(-x);
 		}
 		
 		else if(x<0){	
-			fl.set(x);
-			rl.set(-x);
+			fl.set(-x);
+			rl.set(x);
 			fr.set(x);
 			rr.set(-x);
 	}	
 		}
+		else{
 		double y = j.getY();
 		double z = j.getZ();
 		double left = 0;
@@ -68,7 +69,7 @@ public class DriveTrain
 		rr.set(right);
 		
 	
-
+		}
 		
 		}
 			/*
