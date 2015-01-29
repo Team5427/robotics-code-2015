@@ -10,7 +10,6 @@ public class SteelTalon extends Talon{
 		super(channel);
 		this.forwardOffset = forwardOffset;
 		this.backwardsOffset = backwardsOffset;
-		// TODO Auto-generated constructor stub
 		reverse = r;
 	}
 	
