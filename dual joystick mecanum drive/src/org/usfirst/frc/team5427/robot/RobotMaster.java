@@ -33,17 +33,33 @@ public class RobotMaster implements Runnable{
 	}
 	
 	public void runButtonCommands(){
-		if(button.armGrab()){
-			arm.grab();
+		if(button.armGrab()&&button.armUngrab()){
+			arm.stop();
 		}
-		if(button.armUngrab()){
-			arm.ungrab();
+		else{
+			if(button.armGrab()){
+				arm.grab();
+			}
+			else if(button.armUngrab()){
+				arm.ungrab();
+			}
+			else{
+				arm.stop();
+			}
 		}
-		if(button.liftUp()){
-			lift.up();
+		if(button.liftUp()&&button.liftDown()){
+		arm.stop();
 		}
-		if(button.liftDown()){
-			lift.down();
+		else{ 
+			if(button.liftUp()){
+				lift.up();
+			}
+			else if(button.liftDown()){
+				lift.down();
+			}
+			else{
+				lift.stop();
+			}
 		}
 	}
 }
