@@ -2,6 +2,8 @@ package org.usfirst.frc.team5427.robot;
 
 public class Config {
 	
+	//NOT YET FUNCTIONAL -- WILL EVENTUALLY MAKE A CFG FILE FOR THIS
+	
 	//Ports
 	public static final int frontLeftPort = 0;
 	public static final int frontRightPort = 1;
