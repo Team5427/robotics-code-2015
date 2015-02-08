@@ -30,8 +30,8 @@ public class Robot extends IterativeRobot {
 	public static final SpeedController frontRight = new SteelTalon(1,false,0,0);
 	public static final SpeedController rearLeft = new SteelTalon(2,true,.03,.03);
 	public static final SpeedController rearRight = new SteelTalon(3,false,.003,.003);
-	public static final SpeedController lift = new ConstantSteelTalon(4,.5);
-	public static final SpeedController arm = new ConstantSteelTalon(5,.5);
+	public static final ConstantSteelTalon lift = new ConstantSteelTalon(4,.5);
+	public static final ConstantSteelTalon arm = new ConstantSteelTalon(5,.5);
 	RobotMaster robo;
 	DriveTrain d;
 	Thread t;

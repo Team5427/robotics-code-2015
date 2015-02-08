@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5427.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
 
 public class RobotMaster implements Runnable{
 	DriveTrain d;
@@ -10,7 +9,7 @@ public class RobotMaster implements Runnable{
 	Buttons button;
 	Joystick j;
 	
-	public RobotMaster(DriveTrain d, Joystick j, SpeedController l, SpeedController a){
+	public RobotMaster(DriveTrain d, Joystick j, ConstantSteelTalon l, ConstantSteelTalon a){
 		this.d = d;
 		arm = new Arm(a);
 		lift = new Lift(l);

@@ -1,15 +1,18 @@
 package org.usfirst.frc.team5427.robot;
 
-import edu.wpi.first.wpilibj.SpeedController;
 
 public class Lift {
-	public Lift(SpeedController l){
-		
+	ConstantSteelTalon l;
+	public Lift(ConstantSteelTalon l){
+		this.l = l;
 	}
 	public void up(){
-		
+		l.forward();
+	}
+	public void stop(){
+		l.stop();
 	}
 	public void down(){
-		
+		l.backward();
 	}
 }
