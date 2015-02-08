@@ -30,8 +30,11 @@ public class Robot extends IterativeRobot {
 	public static final SpeedController frontRight = new SteelTalon(1,false,0,0);
 	public static final SpeedController rearLeft = new SteelTalon(2,true,.03,.03);
 	public static final SpeedController rearRight = new SteelTalon(3,false,.003,.003);
-
+	public static final SpeedController lift = new ConstantSteelTalon(4,.5);
+	public static final SpeedController arm = new ConstantSteelTalon(5,.5);
+	RobotMaster robo;
 	DriveTrain d;
+	Thread t;
 	
     Command autonomousCommand;
 
@@ -66,9 +69,13 @@ public class Robot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
+		d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
+		robo = new RobotMaster(d, j, lift, arm);
+		t = new Thread(robo);
+		t.start();
         if (autonomousCommand != null) autonomousCommand.cancel();
 
-        d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
+        
     }
 
     /**
