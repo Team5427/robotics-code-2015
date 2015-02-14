@@ -20,6 +20,7 @@ public class DriveTrain {
 		this.j = j;
 		while (true) {
 			if (j.getRawButton(2) == true) {
+				
 				double x = j.getX();
 				if (x > 0) {
 					fl.set(x);

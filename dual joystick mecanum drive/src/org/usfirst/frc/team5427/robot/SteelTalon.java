@@ -16,9 +16,9 @@ public class SteelTalon extends Talon{
 	@Override
     public void set(double speed) {
 		if(speed>.02)
-			speed += forwardOffset;
+			speed += backwardsOffset;
 		else if (speed<-.02)
-			speed -= backwardsOffset;
+			speed -= forwardOffset;
 
 		if(speed > 1) speed = 1;
 		if(speed < -1) speed = -1;

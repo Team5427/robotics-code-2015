@@ -26,10 +26,10 @@ public class Robot extends IterativeRobot {
 
 
 	Joystick j = new Joystick(0);
-	public static final SpeedController frontLeft = new SteelTalon(0,true,.0333,.0333);
-	public static final SpeedController frontRight = new SteelTalon(1,false,0,0);
-	public static final SpeedController rearLeft = new SteelTalon(2,true,.03,.03);
-	public static final SpeedController rearRight = new SteelTalon(3,false,.003,.003);
+	public static final SpeedController frontLeft = new SteelTalon(0,true,0.04,0);   //reverse master
+	public static final SpeedController frontRight = new SteelTalon(1,false,0,0.023);   //forward master
+	public static final SpeedController rearLeft = new SteelTalon(2,true,0.04,0.015);
+	public static final SpeedController rearRight = new SteelTalon(3,false,0.002,0.035);
 
 	DriveTrain d;
 	
@@ -67,7 +67,6 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-
         d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
     }
 
