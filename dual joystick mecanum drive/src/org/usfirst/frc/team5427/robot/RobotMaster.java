@@ -23,7 +23,7 @@ public class RobotMaster implements Runnable{
 		try{
 		while(true){
 			Thread.sleep(5);
-			d.drive();
+			d.driveManager();
 			runButtonCommands();
 		}
 		}catch(Exception e){
