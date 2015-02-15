@@ -1,9 +1,8 @@
 package org.usfirst.frc.team5427.robot;
 
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 
-public class ConstantSteelTalon extends Talon
+public class ConstantSteelVictor extends Victor
 {
 	/*
 	 * similar to the Talon SpeedController, but it can only be set to one speed
@@ -12,7 +11,7 @@ public class ConstantSteelTalon extends Talon
 	 */
 	double speed;
 
-	public ConstantSteelTalon(int channel, double speed)
+	public ConstantSteelVictor(int channel, double speed)
 	{
 		super(channel);
 		this.speed = speed;
@@ -26,13 +25,14 @@ public class ConstantSteelTalon extends Talon
 
 	public void backward()
 	{
-		super.set(-1 * speed);
+		//TODO temp solution
+		super.set((-1 * speed)/3);
 		Feed();
 	}
 
 	public void stop()
 	{
-		super.set(0);
+		super.set(.1);
 		Feed();
 	}
 

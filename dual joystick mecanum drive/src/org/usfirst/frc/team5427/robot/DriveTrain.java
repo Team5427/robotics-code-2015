@@ -60,11 +60,12 @@ public class DriveTrain
 		 * offsets will be different while
 		 * strafing.
 		 */
-
+/*
 		fl = new SteelTalon(0, true, 0.04, 0);
 		fr = new SteelTalon(1, false, 0, 0.023);
 		rl = new SteelTalon(2, true, 0.04, 0.015);
 		rr = new SteelTalon(3, false, 0.002, 0.035);
+		*/
 		double y = j.getY();
 		double z = j.getZ();
 		double left = 0;
@@ -108,10 +109,12 @@ public class DriveTrain
 		 * changes the offsets of the wheels to account for different amounts of
 		 * friction on different wheels
 		 */
+		/*
 		fl = new SteelTalon(0, true, 0., 0);
 		fr = new SteelTalon(1, false, 0, 0);
 		rl = new SteelTalon(2, true, 0, 0);
 		rr = new SteelTalon(3, false, 0, 0);
+		*/
 		double x = j.getX();
 		if (x > 0)
 		{

@@ -2,9 +2,9 @@ package org.usfirst.frc.team5427.robot;
 
 public class Lift
 {
-	ConstantSteelTalon l;
+	ConstantSteelVictor l;
 
-	public Lift(ConstantSteelTalon l)
+	public Lift(ConstantSteelVictor l)
 	{
 		this.l = l;
 	}

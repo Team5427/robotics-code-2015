@@ -22,9 +22,16 @@ public class SteelTalon extends Talon
 	public SteelTalon(int channel, boolean r, double backwardOffset, double forwardOffset)
 	{
 		super(channel);
+
 		this.backwardoffset = backwardOffset;
 		this.forwardOffset = forwardOffset;
 		reverse = r;
+	}
+
+	public void changeOffsets(double backwardOffset, double forwardOffset)
+	{
+		this.backwardoffset = backwardOffset;
+		this.forwardOffset = forwardOffset;
 	}
 
 	@Override
@@ -35,8 +42,8 @@ public class SteelTalon extends Talon
 		else if (speed < -.02) speed -= backwardoffset;
 
 		/*
-		 *  ensures that the speed plus/minus the offset will not exceed the
-		 *  maximum values that .set can recieve
+		 * ensures that the speed plus/minus the offset will not exceed the
+		 * maximum values that .set can recieve
 		 */
 
 		if (speed > 1) speed = 1;

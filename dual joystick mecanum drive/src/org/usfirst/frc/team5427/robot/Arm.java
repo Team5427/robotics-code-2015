@@ -6,9 +6,9 @@ public class Arm
 	 * controls the motor for the arm, methods in this class just make the motor
 	 * that controls the arms easier to control
 	 */
-	ConstantSteelTalon a;
+	ConstantSteelVictor a;
 
-	public Arm(ConstantSteelTalon a)
+	public Arm(ConstantSteelVictor a)
 	{
 		this.a = a;
 	}
