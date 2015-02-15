@@ -17,6 +17,8 @@ public class SteelTalon extends Talon
 	boolean reverse;
 	double backwardoffset, forwardOffset;
 
+	// TODO backwardOffset and forwardOffset may need to be switched!
+
 	public SteelTalon(int channel, boolean r, double backwardOffset, double forwardOffset)
 	{
 		super(channel);
@@ -31,6 +33,11 @@ public class SteelTalon extends Talon
 		if (speed > .02)
 			speed += forwardOffset;
 		else if (speed < -.02) speed -= backwardoffset;
+
+		/*
+		 *  ensures that the speed plus/minus the offset will not exceed the
+		 *  maximum values that .set can recieve
+		 */
 
 		if (speed > 1) speed = 1;
 		if (speed < -1) speed = -1;

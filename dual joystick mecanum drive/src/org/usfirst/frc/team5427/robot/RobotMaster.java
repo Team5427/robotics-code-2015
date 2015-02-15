@@ -19,7 +19,6 @@ public class RobotMaster implements Runnable{
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 		try{
 		while(true){
 			Thread.sleep(5);

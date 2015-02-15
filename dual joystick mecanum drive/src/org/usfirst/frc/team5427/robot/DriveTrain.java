@@ -7,7 +7,12 @@ public class DriveTrain
 {
 	SpeedController fl, fr, rl, rr;
 	Joystick j;
+	Buttons b;
 
+	/*
+	 * class that handles everything to do with moving the robot.
+	 * it enables the robot to drive like a car, or strafe side to side.
+	 */
 	public DriveTrain(SpeedController fl, SpeedController fr, SpeedController rl, SpeedController rr, Joystick j)
 	{
 		this.fl = fl;
@@ -15,29 +20,51 @@ public class DriveTrain
 		this.rl = rl;
 		this.rr = rr;
 		this.j = j;
+		b = new Buttons(j);
 		driveManager();
 	}
 
 	public void driveManager()
 	{
-		while (true)
+		/*
+		 * checks whether or not a button on the joystick is being held down,
+		 * and
+		 * switches between and only-strafing mode, and an only-driving mode
+		 * accordingly.
+		 * This method is called periodically by RobotMaster
+		 */
+		if (b.toggle() == true)
 		{
-			if (j.getRawButton(2) == true)
-			{
-				strafing();
-			} else
-			{
-				drive();
-			}
+			strafing();
+		} else
+		{
+			drive();
 		}
+
 	}
 
+	/*
+	 * method for driving the robot, enables the robot to drive similarly to the
+	 * car, accepting
+	 * the joystick's y-value, as well as twist amount to determine how fast to
+	 * drive, as well as
+	 * what ratio to move the left wheels vs the right wheels, causing it to
+	 * turn.
+	 */
 	public void drive()
 	{
-		fl = new SteelTalon(0,true,0.04,0);		//reverse master
-		fr = new SteelTalon(1,false,0,0.023);   //forward master
-		rl = new SteelTalon(2,true,0.04,0.015);
-		rr = new SteelTalon(3,false,0.002,0.035);
+		/*
+		 * sets the offsets back to normal, so that if the switching button on
+		 * the joystick was recently pressed,
+		 * the robot will still be able to drive in a straight line because the
+		 * offsets will be different while
+		 * strafing.
+		 */
+
+		fl = new SteelTalon(0, true, 0.04, 0);
+		fr = new SteelTalon(1, false, 0, 0.023);
+		rl = new SteelTalon(2, true, 0.04, 0.015);
+		rr = new SteelTalon(3, false, 0.002, 0.035);
 		double y = j.getY();
 		double z = j.getZ();
 		double left = 0;
@@ -69,12 +96,22 @@ public class DriveTrain
 
 	}
 
+	/*
+	 * controls the back wheels and front wheels seperately, making them either
+	 * go towards or
+	 * away from each other, causing the robot to move side to side due to how
+	 * the mecanum wheels work.
+	 */
 	public void strafing()
 	{
-		fl = new SteelTalon(0,true,0.,0);
-		fr = new SteelTalon(1,false,0,0); 
-		rl = new SteelTalon(2,true,0,0);
-		rr = new SteelTalon(3,false,0,0);
+		/*
+		 * changes the offsets of the wheels to account for different amounts of
+		 * friction on different wheels
+		 */
+		fl = new SteelTalon(0, true, 0., 0);
+		fr = new SteelTalon(1, false, 0, 0);
+		rl = new SteelTalon(2, true, 0, 0);
+		rr = new SteelTalon(3, false, 0, 0);
 		double x = j.getX();
 		if (x > 0)
 		{

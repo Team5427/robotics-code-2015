@@ -1,18 +1,26 @@
 package org.usfirst.frc.team5427.robot;
 
-
-public class Lift {
+public class Lift
+{
 	ConstantSteelTalon l;
-	public Lift(ConstantSteelTalon l){
+
+	public Lift(ConstantSteelTalon l)
+	{
 		this.l = l;
 	}
-	public void up(){
+
+	public void up()
+	{
 		l.forward();
 	}
-	public void stop(){
+
+	public void stop()
+	{
 		l.stop();
 	}
-	public void down(){
+
+	public void down()
+	{
 		l.backward();
 	}
 }
