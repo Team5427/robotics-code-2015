@@ -15,13 +15,13 @@ public class SteelTalon extends Talon
 	 * drive straight.
 	 */
 	boolean reverse;
-	double forwardOffset, backwardsOffset;
+	double backwardoffset, forwardOffset;
 
-	public SteelTalon(int channel, boolean r, double forwardOffset, double backwardsOffset)
+	public SteelTalon(int channel, boolean r, double backwardOffset, double forwardOffset)
 	{
 		super(channel);
+		this.backwardoffset = backwardOffset;
 		this.forwardOffset = forwardOffset;
-		this.backwardsOffset = backwardsOffset;
 		reverse = r;
 	}
 
@@ -30,7 +30,7 @@ public class SteelTalon extends Talon
 	{
 		if (speed > .02)
 			speed += forwardOffset;
-		else if (speed < -.02) speed -= backwardsOffset;
+		else if (speed < -.02) speed -= backwardoffset;
 
 		if (speed > 1) speed = 1;
 		if (speed < -1) speed = -1;
