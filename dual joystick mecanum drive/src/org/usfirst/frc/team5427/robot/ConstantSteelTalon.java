@@ -3,7 +3,7 @@ package org.usfirst.frc.team5427.robot;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 
-public class ConstantSteelTalon extends Talon
+abstract public class ConstantSteelTalon extends Talon
 {
 	/*
 	 * similar to the Talon SpeedController, but it can only be set to one speed

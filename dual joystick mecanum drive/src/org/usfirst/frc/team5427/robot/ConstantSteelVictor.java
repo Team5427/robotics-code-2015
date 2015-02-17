@@ -2,7 +2,7 @@ package org.usfirst.frc.team5427.robot;
 
 import edu.wpi.first.wpilibj.Victor;
 
-public class ConstantSteelVictor extends Victor
+abstract public class ConstantSteelVictor extends Victor
 {
 	/*
 	 * similar to the Talon SpeedController, but it can only be set to one speed
@@ -17,23 +17,10 @@ public class ConstantSteelVictor extends Victor
 		this.speed = speed;
 	}
 
-	public void forward()
-	{
-		super.set(speed);
-		Feed();
-	}
+	abstract public void forward();
 
-	public void backward()
-	{
-		//TODO temp solution
-		super.set((-1 * speed)/3);
-		Feed();
-	}
+	abstract public void backward();
 
-	public void stop()
-	{
-		super.set(.1);
-		Feed();
-	}
-
+	abstract public void stop();
+	
 }

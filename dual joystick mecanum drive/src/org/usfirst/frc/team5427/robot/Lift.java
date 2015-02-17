@@ -2,9 +2,9 @@ package org.usfirst.frc.team5427.robot;
 
 public class Lift
 {
-	ConstantSteelVictor l;
+	LiftVictor l;
 
-	public Lift(ConstantSteelVictor l)
+	public Lift(LiftVictor l)
 	{
 		this.l = l;
 	}
@@ -22,5 +22,8 @@ public class Lift
 	public void down()
 	{
 		l.backward();
+	}
+	public void changeToteCount(int toteCount){
+		l.changeToteCount(toteCount);
 	}
 }

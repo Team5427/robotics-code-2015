@@ -39,4 +39,22 @@ public class Buttons
 	{
 		return j.getRawButton(4);
 	}
+	
+	public boolean toteChange(){
+		return j.getRawButton(7) || j.getRawButton(9) || j.getRawButton(11) || j.getRawButton(12);
+	}
+	public int toteNumber(){
+		if(j.getRawButton(7))
+			return 1;
+		if(j.getRawButton(9))
+			return 2;
+		if(j.getRawButton(11))
+			return 3;
+		return 0;
+		
+	}
+	
+	
+	
+	
 }

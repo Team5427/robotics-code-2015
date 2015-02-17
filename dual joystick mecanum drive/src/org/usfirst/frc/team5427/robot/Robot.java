@@ -46,8 +46,8 @@ public class Robot extends IterativeRobot
 	 * to one speed,
 	 * and accepts a boolean instead of a double to control it.
 	 */
-	public static final ConstantSteelVictor lift = new ConstantSteelVictor(4, .4);
-	public static final ConstantSteelVictor arm = new ConstantSteelVictor(5, 1);
+	public static final LiftVictor lift = new LiftVictor(4, .4);
+	public static final ArmVictor arm = new ArmVictor(5, 1);
 	/*
 	 * Defining the RobotMaster, DriveTrain, and a Thread, which will all be
 	 * used in order to create the RobotMaster

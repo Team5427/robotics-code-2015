@@ -10,7 +10,7 @@ public class RobotMaster implements Runnable
 	Buttons button;
 	Joystick j;
 
-	public RobotMaster(DriveTrain d, Joystick j, ConstantSteelVictor l, ConstantSteelVictor a)
+	public RobotMaster(DriveTrain d, Joystick j, LiftVictor l, ArmVictor a)
 	{
 		this.d = d;
 		arm = new Arm(a);
@@ -19,8 +19,13 @@ public class RobotMaster implements Runnable
 		this.j = j;
 	}
 
-	/*
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Runnable#run()
+	 * 
+	 *
 	 * Thread that checks on the joystick to see if any motors need to be moved
+	 *
 	 */
 	public void run()
 	{
@@ -48,6 +53,11 @@ public class RobotMaster implements Runnable
 	 */
 	public void runButtonCommands()
 	{
+		if(button.toteChange()){
+			lift.changeToteCount(button.toteNumber());
+		}
+		
+		
 		if (button.armGrab() && button.armUngrab())
 		{
 			arm.stop();
@@ -64,6 +74,8 @@ public class RobotMaster implements Runnable
 				arm.stop();
 			}
 		}
+		
+		
 		if (button.liftUp() && button.liftDown())
 		{
 			arm.stop();
