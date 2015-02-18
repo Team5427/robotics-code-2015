@@ -55,7 +55,7 @@ public class Robot extends IterativeRobot
 	 * and accepts a boolean instead of a double to control it.
 	 */
 	public static final LiftVictor lift = new LiftVictor(4, .4, liftLimiter);
-	public static final ArmVictor arm = new ArmVictor(5, 1,armsOutwardLimiter,armsInwardLimiter);
+	public static final ArmVictor arm = new ArmVictor(5, .6,armsOutwardLimiter,armsInwardLimiter);
 	/*
 	 * Defining the RobotMaster, DriveTrain, and a Thread, which will all be
 	 * used in order to create the RobotMaster

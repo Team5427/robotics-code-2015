@@ -12,7 +12,7 @@ public class LiftVictor extends ConstantSteelVictor{
 		this.heightLimiter = heightLimiter;
 	}
 	public void forward(){
-		if(!heightLimiter.get()){
+		if(heightLimiter.get()){
 		super.set(speed);
 		Feed();
 		}
@@ -24,14 +24,19 @@ public class LiftVictor extends ConstantSteelVictor{
 	}
 
 	public void stop(){
+		System.out.println(heightLimiter.get());
+
+		/*
 		switch(toteCount){
-			case 0: super.set(0.1);
+			case 0: super.set(0.05);
 			case 1: super.set(0.2);
 			case 2: super.set(0.3);
 			case 3: super.set(0.4);
 			
 			Feed();
 		}
+		*/
+		super.set(.05);
 		
 	}
 	public void changeToteCount(int toteCount){

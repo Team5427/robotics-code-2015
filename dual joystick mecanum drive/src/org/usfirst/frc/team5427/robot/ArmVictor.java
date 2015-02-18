@@ -17,7 +17,7 @@ public class ArmVictor extends ConstantSteelVictor
 
 	public void forward()
 	{
-		if (!inwards.get())
+		if (inwards.get())
 		{
 			super.set(speed);
 			Feed();
@@ -26,7 +26,7 @@ public class ArmVictor extends ConstantSteelVictor
 
 	public void backward()
 	{
-		if (!outwards.get())
+		if (outwards.get())
 		{
 			super.set(-1 * speed);
 			Feed();
