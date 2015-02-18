@@ -1,22 +1,41 @@
 package org.usfirst.frc.team5427.robot;
 
-public class ArmVictor extends ConstantSteelVictor{
+import edu.wpi.first.wpilibj.DigitalInput;
 
-	public ArmVictor(int channel, double speed) {
+public class ArmVictor extends ConstantSteelVictor
+{
+
+	DigitalInput outwards, inwards;
+
+	public ArmVictor(int channel, double speed, DigitalInput outwards, DigitalInput inwards)
+	{
 		super(channel, speed);
-	}
-	public void forward(){
-		super.set(speed);
-		Feed();
-	}
-
-	public void backward(){
-		super.set(-1 * speed / 3);
-		Feed();
+		this.outwards = outwards;
+		this.inwards = inwards;
+		// TODO may need to switch the digitalinputs
 	}
 
-	public void stop(){
-		super.set(.1);
+	public void forward()
+	{
+		if (!inwards.get())
+		{
+			super.set(speed);
+			Feed();
+		}
+	}
+
+	public void backward()
+	{
+		if (!outwards.get())
+		{
+			super.set(-1 * speed);
+			Feed();
+		}
+	}
+
+	public void stop()
+	{
+		super.set(0);
 		Feed();
 	}
 }

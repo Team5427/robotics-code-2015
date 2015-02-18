@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5427.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -39,6 +40,13 @@ public class Robot extends IterativeRobot
 	public static final SpeedController rearLeft = new SteelTalon(2, true, 0.04, 0.015);
 	public static final SpeedController rearRight = new SteelTalon(3, false, 0.002, 0.035);
 	/*
+	 * defining the Digital inputs, which are used for the limit switches  
+	 */
+	public static final DigitalInput liftLimiter = new DigitalInput(0);
+	public static final DigitalInput armsOutwardLimiter = new DigitalInput(1);
+	public static final DigitalInput armsInwardLimiter = new DigitalInput(2);
+	
+	/*
 	 * Defining the motors that both control the lift, and the arms of the
 	 * robot, which are ConstantSteelTalons. ConstantSteelTalons are a modified
 	 * version of
@@ -46,8 +54,8 @@ public class Robot extends IterativeRobot
 	 * to one speed,
 	 * and accepts a boolean instead of a double to control it.
 	 */
-	public static final LiftVictor lift = new LiftVictor(4, .4);
-	public static final ArmVictor arm = new ArmVictor(5, 1);
+	public static final LiftVictor lift = new LiftVictor(4, .4, liftLimiter);
+	public static final ArmVictor arm = new ArmVictor(5, 1,armsOutwardLimiter,armsInwardLimiter);
 	/*
 	 * Defining the RobotMaster, DriveTrain, and a Thread, which will all be
 	 * used in order to create the RobotMaster
