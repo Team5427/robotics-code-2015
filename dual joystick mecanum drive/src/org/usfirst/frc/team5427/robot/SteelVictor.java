@@ -1,8 +1,8 @@
 package org.usfirst.frc.team5427.robot;
 
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 
-public class SteelTalon extends Talon
+public class SteelVictor extends Victor
 {
 	/*
 	 * SteelTalon is similar to the basic Talon class, but it was created to
@@ -19,7 +19,7 @@ public class SteelTalon extends Talon
 
 	// TODO backwardOffset and forwardOffset may need to be switched!
 
-	public SteelTalon(int channel, boolean r, double backwardOffset, double forwardOffset)
+	public SteelVictor(int channel, boolean r, double backwardOffset, double forwardOffset)
 	{
 		super(channel);
 

@@ -10,27 +10,28 @@ public class ArmVictor extends ConstantSteelVictor
 	public ArmVictor(int channel, double speed, DigitalInput outwards, DigitalInput inwards)
 	{
 		super(channel, speed);
-		this.outwards = outwards;
-		this.inwards = inwards;
+		this.outwards = inwards;
+		this.inwards = outwards;
 		// TODO may need to switch the digitalinputs
 	}
 
 	public void forward()
 	{
-		if (inwards.get())
-		{
-			super.set(speed);
-			Feed();
-		}
-	}
-
-	public void backward()
-	{
 		if (outwards.get())
 		{
 			super.set(-1 * speed);
 			Feed();
-		}
+		}else stop();
+		
+	}
+
+	public void backward()
+	{
+		if (inwards.get())
+		{
+			super.set(speed);
+			Feed();
+		}else stop();
 	}
 
 	public void stop()

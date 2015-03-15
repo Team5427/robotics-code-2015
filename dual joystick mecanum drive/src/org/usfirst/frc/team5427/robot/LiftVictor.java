@@ -6,21 +6,25 @@ public class LiftVictor extends ConstantSteelVictor{
 
 	int toteCount = 0;
 	DigitalInput heightLimiter;
+	DigitalInput bottomLimiter;
 	
-	public LiftVictor(int channel, double speed,DigitalInput heightLimiter) {
+	public LiftVictor(int channel, double speed,DigitalInput heightLimiter, DigitalInput bottomLimiter) {
 		super(channel, speed);
 		this.heightLimiter = heightLimiter;
+		this.bottomLimiter = bottomLimiter;
 	}
 	public void forward(){
 		if(heightLimiter.get()){
 		super.set(speed);
 		Feed();
-		}
+		}else stop();
 	}
 
 	public void backward(){
+		if(bottomLimiter.get()){
 		super.set(-1 * speed / 3);
 		Feed();
+		}else stop();
 	}
 
 	public void stop(){

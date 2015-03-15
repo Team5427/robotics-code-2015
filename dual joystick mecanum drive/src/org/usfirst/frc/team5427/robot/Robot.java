@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team5427.robot.commands.ExampleCommand;
+import org.usfirst.frc.team5427.robot.config.Config;
 import org.usfirst.frc.team5427.robot.subsystems.ExampleSubsystem;
 
 /**
@@ -23,8 +24,10 @@ public class Robot extends IterativeRobot
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
-
-	Joystick j = new Joystick(0);
+	
+	Config cfg = new Config();
+	
+	Joystick j = new Joystick(Config.joystickPort);
 	/*
 	 * Defining the four motors attached to the chassis as SteelTalons, which is
 	 * a modified version of the Talon class, but includes the additional
@@ -35,16 +38,17 @@ public class Robot extends IterativeRobot
 	 * forwards and backwards, so that they will all
 	 * move at the same speed.
 	 */
-	public static final SpeedController frontLeft = new SteelTalon(0, true, 0.04, 0);
-	public static final SpeedController frontRight = new SteelTalon(1, false, 0, 0.023);
-	public static final SpeedController rearLeft = new SteelTalon(2, true, 0.04, 0.015);
-	public static final SpeedController rearRight = new SteelTalon(3, false, 0.002, 0.035);
+	public static final SteelVictor frontLeft = new SteelVictor(Config.frontLeftPort, Config.frontLeftIsReverse, Config.frontLeftBackwardOffset, Config.frontLeftForwardOffset);
+	public static final SteelVictor frontRight = new SteelVictor(Config.frontRightPort, Config.frontRightIsReverse, Config.frontRightBackwardOffset, Config.frontRightForwardOffset);
+	public static final SteelVictor rearLeft = new SteelVictor(Config.rearLeftPort, Config.rearLeftIsReverse, Config.rearLeftBackwardOffset, Config.rearRightBackwardOffset);
+	public static final SteelVictor rearRight = new SteelVictor(Config.rearRightPort, Config.rearRightIsReverse, Config.rearRightBackwardOffset, Config.rearRightForwardOffset);
 	/*
 	 * defining the Digital inputs, which are used for the limit switches  
 	 */
-	public static final DigitalInput liftLimiter = new DigitalInput(0);
-	public static final DigitalInput armsOutwardLimiter = new DigitalInput(1);
-	public static final DigitalInput armsInwardLimiter = new DigitalInput(2);
+	public static final DigitalInput liftLimiter = new DigitalInput(Config.liftTop);
+	public static final DigitalInput liftLimiterBottom = new DigitalInput(Config.liftBottom);
+	public static final DigitalInput armsOutwardLimiter = new DigitalInput(Config.armsOut);
+	public static final DigitalInput armsInwardLimiter = new DigitalInput(Config.armsIn);
 	
 	/*
 	 * Defining the motors that both control the lift, and the arms of the
@@ -54,8 +58,8 @@ public class Robot extends IterativeRobot
 	 * to one speed,
 	 * and accepts a boolean instead of a double to control it.
 	 */
-	public static final LiftVictor lift = new LiftVictor(4, .4, liftLimiter);
-	public static final ArmVictor arm = new ArmVictor(5, .6,armsOutwardLimiter,armsInwardLimiter);
+	public static final LiftVictor lift = new LiftVictor(4, Config.liftSpeed, liftLimiter, liftLimiterBottom);
+	public static final ArmVictor arm = new ArmVictor(5, Config.armSpeed,armsOutwardLimiter,armsInwardLimiter);
 	/*
 	 * Defining the RobotMaster, DriveTrain, and a Thread, which will all be
 	 * used in order to create the RobotMaster

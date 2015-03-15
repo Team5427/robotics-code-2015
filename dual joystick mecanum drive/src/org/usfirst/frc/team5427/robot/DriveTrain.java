@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5427.robot;
 
+import org.usfirst.frc.team5427.robot.config.Config;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 
@@ -13,7 +15,7 @@ public class DriveTrain
 	 * class that handles everything to do with moving the robot.
 	 * it enables the robot to drive like a car, or strafe side to side.
 	 */
-	public DriveTrain(SpeedController fl, SpeedController fr, SpeedController rl, SpeedController rr, Joystick j)
+	public DriveTrain(SteelVictor fl, SteelVictor fr, SteelVictor rl, SteelVictor rr, Joystick j)
 	{
 		this.fl = fl;
 		this.fr = fr;
@@ -66,6 +68,11 @@ public class DriveTrain
 		rl = new SteelTalon(2, true, 0.04, 0.015);
 		rr = new SteelTalon(3, false, 0.002, 0.035);
 		*/
+		((SteelVictor) fl).changeOffsets(Config.frontLeftBackwardOffset, Config.frontLeftForwardOffset );
+		((SteelVictor) fr).changeOffsets(Config.frontRightBackwardOffset, Config.frontRightForwardOffset);
+		((SteelVictor) rl).changeOffsets(Config.rearLeftBackwardOffset, Config.rearRightForwardOffset);
+		((SteelVictor) rr).changeOffsets(Config.rearRightBackwardOffset, Config.rearRightForwardOffset);
+		
 		double y = j.getY();
 		double z = j.getZ();
 		double left = 0;
