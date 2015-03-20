@@ -25,6 +25,10 @@ public class Buttons
 		return j.getRawButton(5);
 	}
 
+	public boolean turbo(){
+		return j.getRawButton(1);
+	}
+	
 	public boolean liftDown()
 	{
 		return j.getRawButton(3);

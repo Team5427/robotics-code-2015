@@ -38,7 +38,12 @@ public class DriveTrain
 		if (b.toggle() == true)
 		{
 			strafing();
-		} else
+		} else if(b.turbo()){
+			fr.set(0);
+			fl.set(0);
+			rr.set(-.9);
+			fl.set(-.9);
+		}else 
 		{
 			drive();
 		}
@@ -62,12 +67,6 @@ public class DriveTrain
 		 * offsets will be different while
 		 * strafing.
 		 */
-/*
-		fl = new SteelTalon(0, true, 0.04, 0);
-		fr = new SteelTalon(1, false, 0, 0.023);
-		rl = new SteelTalon(2, true, 0.04, 0.015);
-		rr = new SteelTalon(3, false, 0.002, 0.035);
-		*/
 		((SteelVictor) fl).changeOffsets(Config.frontLeftBackwardOffset, Config.frontLeftForwardOffset );
 		((SteelVictor) fr).changeOffsets(Config.frontRightBackwardOffset, Config.frontRightForwardOffset);
 		((SteelVictor) rl).changeOffsets(Config.rearLeftBackwardOffset, Config.rearRightForwardOffset);
@@ -122,21 +121,28 @@ public class DriveTrain
 		rl = new SteelTalon(2, true, 0, 0);
 		rr = new SteelTalon(3, false, 0, 0);
 		*/
+		/*
+		((SteelVictor) fl).changeOffsets(.05, 0 );
+		((SteelVictor) fr).changeOffsets(.2, 0);
+		((SteelVictor) rl).changeOffsets(0, .02);
+		((SteelVictor) rr).changeOffsets(0, 0);
+		*/
+//		System.out.println("entering strafing mode");
 		double x = j.getX();
-		if (x > 0)
+		if (x < 0)
 		{
 			fl.set(x);
 			rl.set(-x);
-			fr.set(x);
-			rr.set(-x);
+			fr.set(-x);
+			rr.set(x);
 		}
 
-		else if (x < 0)
+		else if (x > 0)
 		{
 			fl.set(x);
 			rl.set(-x);
-			fr.set(x);
-			rr.set(-x);
+			fr.set(-x);
+			rr.set(x);
 		}
 	}
 }

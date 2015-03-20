@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5427.robot.config;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,8 +13,15 @@ public class Config
 	ArrayList<ConfObjectDoub> forwardOffsets = new ArrayList<ConfObjectDoub>();
 	ArrayList<ConfObjectDoub> backwardOffsets = new ArrayList<ConfObjectDoub>();
 	
-	public Config() throws Exception{
-		Scanner scan = new Scanner(new File("config.cfg"));
+	public Config(){
+		try
+		{
+			Scanner scan = new Scanner(new File("config.cfg"));
+		} catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		//TODO scan config -
 		//scan lines 1 by 1 until reaching one that starts with '--'
@@ -46,16 +54,16 @@ public class Config
 
 	// Offsets
 	public static final double frontLeftForwardOffset = 0;
-	public static final double frontLeftBackwardOffset = 0.04;
-	public static final double frontRightForwardOffset = 0.023;
+	public static final double frontLeftBackwardOffset = 0.01;
+	public static final double frontRightForwardOffset = 0.025;
 	public static final double frontRightBackwardOffset = 0;
-	public static final double rearLeftForwardOffset = .015;
-	public static final double rearLeftBackwardOffset = .04;
-	public static final double rearRightForwardOffset = .002;
-	public static final double rearRightBackwardOffset = .035;
+	public static final double rearLeftForwardOffset = .02;
+	public static final double rearLeftBackwardOffset = .01;
+	public static final double rearRightForwardOffset = .05;
+	public static final double rearRightBackwardOffset = 0;
 
 	// Arm and lift speeds
-	public static final double armSpeed = .6;
-	public static final double liftSpeed = .4;
+	public static final double armSpeed = .75;
+	public static final double liftSpeed = .8;
 
 }

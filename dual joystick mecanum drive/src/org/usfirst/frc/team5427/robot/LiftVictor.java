@@ -22,7 +22,7 @@ public class LiftVictor extends ConstantSteelVictor{
 
 	public void backward(){
 		if(bottomLimiter.get()){
-		super.set(-1 * speed / 3);
+		super.set(-1 * speed / 1.5);
 		Feed();
 		}else stop();
 	}
