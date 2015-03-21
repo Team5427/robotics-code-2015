@@ -35,7 +35,10 @@ public class DriveTrain
 		 * accordingly.
 		 * This method is called periodically by RobotMaster
 		 */
-		if (b.toggle() == true)
+		if(b.rotate()){
+			rotate();
+		}
+		else if (b.toggle())
 		{
 			strafing();
 		} else if(b.turbo()){
@@ -58,6 +61,56 @@ public class DriveTrain
 	 * what ratio to move the left wheels vs the right wheels, causing it to
 	 * turn.
 	 */
+	
+	public void advancedDriving(){
+		//TODO this method is in  the development phases and is yet to be tested.
+		double x = j.getX();
+		double y = j.getY();
+		double z = j.getZ();
+		
+		double front_right =0;
+		double front_left =0 ;
+		double rear_right = 0;
+		double rear_left = 0;
+		
+		if(x> .05){
+			front_right *= -1;
+			rear_left *= -1;
+			fl.set(x);
+			rl.set(-x);
+			fr.set(-x);
+			rr.set(x);
+		}
+		else if(x<-.05){
+			fl.set(x);
+			rl.set(-x);
+			fr.set(-x);
+			rr.set(x);
+		}
+		else{
+			
+		}
+		
+		
+		
+	}
+	
+	public void rotate(){
+		if(j.getZ()>0.02){
+			//right
+			
+			fl.set(-j.getZ());
+			rl.set(-j.getZ());
+			fr.set(j.getZ());
+			rr.set(j.getZ());
+		}
+		else if(j.getZ()<-.02){
+			fl.set(-j.getZ());
+			rl.set(-j.getZ());
+			fr.set(j.getZ());
+			rr.set(j.getZ());
+		}
+	}
 	public void drive()
 	{
 		/*

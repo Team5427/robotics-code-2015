@@ -12,6 +12,9 @@ import org.usfirst.frc.team5427.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5427.robot.config.Config;
 import org.usfirst.frc.team5427.robot.subsystems.ExampleSubsystem;
 
+import com.ni.vision.NIVision;
+import com.ni.vision.NIVision.Image;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -24,6 +27,8 @@ public class Robot extends IterativeRobot
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	public int session;
+    public Image frame;
 	
 	Config cfg = new Config();
 	
@@ -80,6 +85,13 @@ public class Robot extends IterativeRobot
 	public void robotInit()
 	{
 		oi = new OI();
+		 frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
+
+	        // the camera name (ex "cam0") can be found through the roborio web interface
+	        session = NIVision.IMAQdxOpenCamera("cam0",
+	                NIVision.IMAQdxCameraControlMode.CameraControlModeController);
+	        NIVision.IMAQdxConfigureGrab(session);
+		
 		// instantiate the command used for the autonomous period
 		autonomousCommand = new ExampleCommand();
 	}
@@ -115,7 +127,7 @@ public class Robot extends IterativeRobot
 		 * a Thread.
 		 */
 		d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
-		robo = new RobotMaster(d, j, lift, arm);
+		robo = new RobotMaster(d, j, lift, arm,session, frame);
 		t = new Thread(robo);
 		t.start();
 

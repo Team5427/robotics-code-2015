@@ -28,6 +28,9 @@ public class Buttons
 	public boolean turbo(){
 		return j.getRawButton(1);
 	}
+	public boolean rotate(){
+		return j.getRawButton(11);
+	}
 	
 	public boolean liftDown()
 	{

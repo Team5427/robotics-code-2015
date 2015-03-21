@@ -28,7 +28,6 @@ public class LiftVictor extends ConstantSteelVictor{
 	}
 
 	public void stop(){
-		System.out.println(heightLimiter.get());
 
 		/*
 		switch(toteCount){
