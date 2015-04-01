@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team5427.robot.commands.ExampleCommand;
 import org.usfirst.frc.team5427.robot.config.Config;
 import org.usfirst.frc.team5427.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team5427.teleOp.AutonomousCommands;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -73,6 +74,7 @@ public class Robot extends IterativeRobot
 	 * within a thread.
 	 */
 	RobotMaster robo;
+	AutonomousCommands autonCommands;
 	DriveTrain d;
 	Thread t;
 
@@ -85,6 +87,7 @@ public class Robot extends IterativeRobot
 	public void robotInit()
 	{
 		oi = new OI();
+		d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
 		 frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
 
 	        // the camera name (ex "cam0") can be found through the roborio web interface
@@ -103,6 +106,9 @@ public class Robot extends IterativeRobot
 
 	public void autonomousInit()
 	{
+		autonCommands = new AutonomousCommands(d, lift, arm);
+		
+		
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null) autonomousCommand.start();
 	}
@@ -126,7 +132,6 @@ public class Robot extends IterativeRobot
 		 * initializing the DriveTrain, and RobotMaster, and then adding them to
 		 * a Thread.
 		 */
-		d = new DriveTrain(frontLeft, frontRight, rearLeft, rearRight, j);
 		robo = new RobotMaster(d, j, lift, arm,session, frame);
 		t = new Thread(robo);
 		t.start();

@@ -33,6 +33,11 @@ public class Config
 	}
 	// NOT YET FUNCTIONAL -- TEMP VERSION BELOW
 
+	public static final int startingPosition = 1;
+	//1 = 
+	//2 = 
+	//3 = 
+	
 	// Ports
 	public static final int frontLeftPort = 0;
 	public static final int frontRightPort = 1;
@@ -43,8 +48,8 @@ public class Config
 	public static final int joystickPort = 0;
 	public static final int liftTop = 0;
 	public static final int liftBottom = 1;
-	public static final int armsOut = 2;
-	public static final int armsIn = 3;
+	public static final int armsOut = 3;
+	public static final int armsIn = 2;
 
 	// Direction
 	public static final boolean frontLeftIsReverse = true;

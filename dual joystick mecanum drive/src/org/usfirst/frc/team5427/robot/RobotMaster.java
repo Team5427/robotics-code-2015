@@ -56,8 +56,8 @@ public class RobotMaster implements Runnable
 
 
 			            NIVision.IMAQdxGrab(session, frame, 1);
-			            NIVision.imaqDrawShapeOnImage(frame, frame, rect,
-			                    DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
+		//	            NIVision.imaqDrawShapeOnImage(frame, frame, rect,
+		//	                    DrawMode.DRAW_VALUE, ShapeMode.SHAPE_OVAL, 0.0f);
 			            
 			            CameraServer.getInstance().setImage(frame);
 
